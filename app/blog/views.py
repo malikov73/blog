@@ -15,7 +15,7 @@ class home(generic.View):
         context = {}
         """Return the last five pubished questions."""
         all_articles = Article.objects.order_by('-created')
-        current_page = Paginator(all_articles, 1)
+        current_page = Paginator(all_articles, 2)
         page = request.GET.get('page')
         try:
             # Если существует, то выбираем эту страницу
@@ -35,8 +35,11 @@ class home(generic.View):
         else:
             context['older'] = '2'
         print(context['article_lists'].has_next())
-        return render_to_response('blog/home1.html', context)
+        return render_to_response('blog/home.html', context)
 
+class PostDetail(generic.DetailView):
+    model = Article
+    template_name = 'blog/post_detail.html'
 """
 class EIndexView(View):
 
