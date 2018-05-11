@@ -15,7 +15,7 @@ class home(generic.View):
         context = {}
         """Return the last five pubished questions."""
         all_articles = Article.objects.order_by('-created')
-        current_page = Paginator(all_articles, 2)
+        current_page = Paginator(all_articles, 1)
         page = request.GET.get('page')
         try:
             # Если существует, то выбираем эту страницу
@@ -29,11 +29,11 @@ class home(generic.View):
         if context['article_lists'].has_next():
             context['never'] = context['article_lists'].next_page_number()
         else:
-            context['never'] = '1'
+            context['never_disabled'] = 'disabled'
         if context['article_lists'].has_previous():
             context['older'] = context['article_lists'].previous_page_number()
         else:
-            context['older'] = '2'
+            context['older_disabled'] = 'disabled'
         print(context['article_lists'].has_next())
         return render_to_response('blog/home.html', context)
 

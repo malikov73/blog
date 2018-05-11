@@ -12,7 +12,9 @@
         <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
     {% endblock assets %}
-    {% block extra_styles %}{% endblock extra_styles %}
+    {% block extra_styles %}
+    <link href="{% static 'css/blog-home.css' %}" rel="stylesheet">
+    {% endblock extra_styles %}
 
 {% endblock head %}
 {% block body %}

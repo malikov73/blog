@@ -34,3 +34,6 @@ class Article(TimeStampedModel):
     def __str__(self):
         return self.title
 
+    def url(self):
+        return self.id
+
