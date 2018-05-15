@@ -26,6 +26,7 @@ class home(generic.View):
         except EmptyPage:
             # Если вышли за последнюю страницу, то возвращаем последнюю
             context['article_lists'] = current_page.page(current_page.num_pages)
+        # be careful here is the shit code
         if context['article_lists'].has_next():
             context['never'] = context['article_lists'].next_page_number()
         else:
@@ -35,7 +36,8 @@ class home(generic.View):
         else:
             context['older_disabled'] = 'disabled'
         print(context['article_lists'].has_next())
-        return render_to_response('blog/home.html', context)
+        return render_to_response(''
+                                  'blog/home.html', context)
 
 class PostDetail(generic.DetailView):
     model = Article
