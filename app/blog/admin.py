@@ -15,4 +15,5 @@ class TagsAdmin(admin.ModelAdmin):
 
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('title','short_text','created')
+

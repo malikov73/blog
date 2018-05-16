@@ -28,12 +28,12 @@ class Article(TimeStampedModel):
     short_text = models.CharField('Description', max_length=200)
     text = models.TextField('Article')
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    Tags = models.ManyToManyField(Tags, null=True, blank=True)
+    Tags = models.ManyToManyField(Tags, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='article', null=True, blank=True)
 
     def __str__(self):
         return self.title
 
     def url(self):
         return self.id
-

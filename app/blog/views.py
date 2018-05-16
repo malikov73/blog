@@ -15,7 +15,7 @@ class home(generic.View):
         context = {}
         """Return the last five pubished questions."""
         all_articles = Article.objects.order_by('-created')
-        current_page = Paginator(all_articles, 1)
+        current_page = Paginator(all_articles, 2)
         page = request.GET.get('page')
         try:
             # Если существует, то выбираем эту страницу
