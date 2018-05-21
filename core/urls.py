@@ -23,7 +23,7 @@ from  .views import FormSIGN
 urlpatterns = [
     path('jet/', include('jet.urls', 'jet')),
     path('admin/', admin.site.urls),
-    path('signup', FormSIGN.as_view()),
+    path('signup/', FormSIGN.as_view()),
     path('', include('app.blog.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls'))
 ]
