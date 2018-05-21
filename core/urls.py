@@ -18,9 +18,12 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 import jet
+from  .views import FormSIGN
+
 urlpatterns = [
     path('jet/', include('jet.urls', 'jet')),
     path('admin/', admin.site.urls),
+    path('signup', FormSIGN.as_view()),
     path('', include('app.blog.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls'))
 ]

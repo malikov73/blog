@@ -5,61 +5,85 @@
 {% block content %}
     <div class="container">
 
-      <div class="row">
+        <div class="row">
 
-        <!-- Post Content Column -->
-        <div class="col-lg-8">
+            <!-- Post Content Column -->
+            <div class="col-lg-8">
 
-          <!-- Title -->
-          <h1 class="mt-4">{{ article.title }}</h1>
+                <!-- Title -->
+                <h1 class="mt-4">{{ article.title }}</h1>
 
-          <!-- Author -->
-          <p class="lead">
-            by
-            <a href="/">Vokilam</a>
-          </p>
+                <!-- Author -->
+                <p class="lead">
+                    by
+                    <a href="/">Vokilam</a>
+                </p>
 
-          <hr>
+                <hr>
 
-          <!-- Date/Time -->
-          <p>{{ article.created }}</p>
+                <!-- Date/Time -->
+                <p>{{ article.created }}</p>
 
-          <hr>
+                <hr>
 
-          <!-- Preview Image -->
-          <img class="img-fluid rounded" src="media/{{ article.image }}" alt="">
+                <!-- Preview Image -->
+                <img class="img-fluid rounded" src="media/{{ article.image }}" alt="">
 
-          <hr>
+                <hr>
 
-          <!-- Post Content -->
-          <p class="lead">{{ article.text|safe }}</p>
-          <hr>
+                <!-- Post Content -->
+                <p class="lead">{{ article.text|safe }}</p>
+                <hr>
 
-          <!-- Comments Form -->
-          <!-- Single Comment -->
+                <!-- Comments Form -->
+                <!-- Single Comment -->
 
 
-          <!-- Comment with nested comments -->
+                <!-- Comment with nested comments -->
 
+
+            </div>
+
+            <!-- Sidebar Widgets Column -->
+            <div class="col-md-4">
+
+                {% include 'blog/widget/search.html' %}
+
+                <!-- Categories Widget -->
+                <div class="card my-4">
+                    <h5 class="card-header">Categories</h5>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <ul class="list-unstyled mb-0">
+                                    {% for cat in category %}
+                                        <li>
+                                            <a href="#">{{ cat.slug }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="col-lg-6">
+                                <ul class="list-unstyled mb-0">
+                                    {% for cat in category %}
+                                        <li>
+                                            <a href="#">{{ cat.slug }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Side Widget -->
+                {% include 'blog/widget/side.html' %}
+            </div>
 
         </div>
 
-        <!-- Sidebar Widgets Column -->
-        <div class="col-md-4">
-
-          {% include 'blog/widget/search.html' %}
-
-          <!-- Categories Widget -->
-          {% include 'blog/widget/categories.html' %}
-
-          <!-- Side Widget -->
-          {% include 'blog/widget/side.html' %}
-          </div>
-
-        </div>
-
-      </div>
-      <!-- /.row -->
+    </div>
+    <!-- /.row -->
 
     </div>
 {% endblock content %}

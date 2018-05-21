@@ -24,9 +24,9 @@ class home(Getcategory, generic.ListView):
 
 
 
-class PostDetail(Getcategory, generic.DetailView):
+class PostDetail(generic.DetailView):
     model = Article
-    context_object_name = 'article_list'
+    context_object_name = 'article'
     template_name = 'blog/post_detail.html'
 
 
