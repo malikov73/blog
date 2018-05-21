@@ -8,36 +8,34 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .models import Article, Category
 from django.shortcuts import render_to_response
 
-
-class home(generic.ListView):
-    context_object_name = 'article_list'
-    model = Article
-    template_name = 'blog/home.html'
-    paginate_by = 2
-
+class Getcategory:
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['category'] = Category.objects.all()[:3]
         context['category2'] = Category.objects.all()[3:]
         return context
 
-
-class PostDetail(generic.DetailView):
+class home(Getcategory, generic.ListView):
+    context_object_name = 'article_list'
     model = Article
+    template_name = 'blog/home.html'
+    paginate_by = 2
+
+
+
+
+class PostDetail(Getcategory, generic.DetailView):
+    model = Article
+    context_object_name = 'article_list'
     template_name = 'blog/post_detail.html'
 
 
-class CategoryPostFilter(generic.ListView):
+class CategoryPostFilter(Getcategory, generic.ListView):
     template_name = 'blog/home.html'
-
+    paginate_by = 2
     def get_queryset(self):
         self.slug = get_object_or_404(Category, name=self.kwargs['slug'])
         return Article.objects.filter(category=self.slug)
-
-    def get_context_data(self, *args, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        print(f"context {context}, object_list {object_list}, kwargs {args} ")
-        return context
 
 
 """

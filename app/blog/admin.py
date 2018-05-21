@@ -26,4 +26,4 @@ class PostAdminForm(forms.ModelForm):
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
     form = PostAdminForm
-    list_display = ('title', 'short_text', 'created')
+    list_display = ('title', 'short_text', 'created','id')
