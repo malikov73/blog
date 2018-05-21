@@ -5,15 +5,11 @@
         <div class="row">
             <div class="col-lg-6">
                 <ul class="list-unstyled mb-0">
-                    <li>
-                        <a href="#">Web Design</a>
+                    {% for cat in category %}
+                        <li>
+                        <a href="#">{{ cat.slug }}</a>
                     </li>
-                    <li>
-                        <a href="#">HTML</a>
-                    </li>
-                    <li>
-                        <a href="#">Freebies</a>
-                    </li>
+                    {% endfor %}
                 </ul>
             </div>
             <div class="col-lg-6">

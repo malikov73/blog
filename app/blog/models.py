@@ -1,7 +1,7 @@
 from django.db import models
 from core.models import TimeStampedModel
 from django.contrib.auth.models import User
-
+from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create your models here.
 
@@ -26,7 +26,7 @@ class Tags(TimeStampedModel):
 class Article(TimeStampedModel):
     title = models.CharField(max_length=200)
     short_text = models.CharField('Description', max_length=200)
-    text = models.TextField('Article')
+    text = RichTextUploadingField('Article', blank=True, default='')
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     Tags = models.ManyToManyField(Tags, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
